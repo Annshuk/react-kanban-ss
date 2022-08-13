@@ -32,12 +32,19 @@ const makeCards = (tasksList) => {
   return makeTasks;
 };
 
+/**
+ * remove item
+ */
 const remove = (arr, index) => [
   ...arr.slice(0, index),
   ...arr.slice(index + 1),
 ];
 
-const moveOrBack = (prevState, task, action) => {
+/**
+ * moveForwardOrBack
+ * move forward or back on button click
+ */
+const moveForwardOrBack = (prevState, task, action) => {
   const { name, stage } = task;
 
   const taskIndex = [...prevState].indexOf(task);
@@ -55,11 +62,11 @@ export default function App() {
   const tasksLits = useMemo(() => makeCards(tasksList), [tasksList]);
 
   const moveBack = (task) => {
-    setTaskList((prevState) => moveOrBack(prevState, task, 1));
+    setTaskList((prevState) => moveForwardOrBack(prevState, task, 1));
   };
 
   const moveForward = (task) => {
-    setTaskList((prevState) => moveOrBack(prevState, task, 3));
+    setTaskList((prevState) => moveForwardOrBack(prevState, task, 3));
   };
 
   const removeTask = (task) => {
