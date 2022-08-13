@@ -51,11 +51,11 @@ export default function App() {
 
   const tasksLits = useMemo(() => makeCards(tasksList), [tasksList]);
 
-  const moveBack = (task) => (event) => {
+  const moveBack = (task) => {
     setTaskList((prevState) => moveOrBack(prevState, task, 1));
   };
 
-  const moveForward = (task) => (event) => {
+  const moveForward = (task) => {
     setTaskList((prevState) => moveOrBack(prevState, task, 3));
   };
 
@@ -75,14 +75,14 @@ export default function App() {
                           {task.name}
                           <IconButton
                             aria-label="delete"
-                            onClick={moveBack(task, i, index)}
+                            onClick={() => moveBack(task)}
                             disabled={task.stage === 0}
                           >
                             <ArrowLeft />
                           </IconButton>
                           <IconButton
                             aria-label="delete"
-                            onClick={moveForward(task, i, index)}
+                            onClick={() => moveForward(task)}
                             disabled={task.stage === 3}
                           >
                             <ArrowRight />
