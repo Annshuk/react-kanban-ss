@@ -13,6 +13,7 @@ import {
 import IconButton from '@mui/material/IconButton';
 import ArrowRight from '@mui/icons-material/ArrowRight';
 import ArrowLeft from '@mui/icons-material/ArrowLeft';
+import Delete from '@mui/icons-material/Delete';
 
 const stagesNames = ['Backlog', 'To Do', 'Ongoing', 'Done'];
 
@@ -31,14 +32,16 @@ const makeCards = (tasksList) => {
   return makeTasks;
 };
 
+const remove = (arr, index) => [
+  ...arr.slice(0, index),
+  ...arr.slice(index + 1),
+];
+
 const moveOrBack = (prevState, task, action) => {
   const { name, stage } = task;
 
   const taskIndex = [...prevState].indexOf(task);
-  const newState = [
-    ...prevState.slice(0, taskIndex),
-    ...prevState.slice(taskIndex + 1),
-  ];
+  const newState = remove(prevState, taskIndex);
 
   return [...newState, { name, stage: action === 1 ? stage - 1 : stage + 1 }];
 };
@@ -57,6 +60,14 @@ export default function App() {
 
   const moveForward = (task) => {
     setTaskList((prevState) => moveOrBack(prevState, task, 3));
+  };
+
+  const removeTask = (task) => {
+    setTaskList((prevState) => {
+      const taskIndex = [...prevState].indexOf(task);
+
+      return remove(prevState, taskIndex);
+    });
   };
 
   return (
@@ -86,6 +97,12 @@ export default function App() {
                             disabled={task.stage === 3}
                           >
                             <ArrowRight />
+                          </IconButton>
+                          <IconButton
+                            aria-label="delete"
+                            onClick={() => removeTask(index)}
+                          >
+                            <Delete />
                           </IconButton>
                         </ListGroupItem>
                       );
