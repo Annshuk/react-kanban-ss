@@ -34,10 +34,10 @@ const makeCards = (tasksList) => {
 const moveOrBack = (prevState, task, action) => {
   const { name, stage } = task;
 
-  const index = [...prevState].indexOf(task);
+  const taskIndex = [...prevState].indexOf(task);
   const newState = [
-    ...prevState.slice(0, index),
-    ...prevState.slice(index + 1),
+    ...prevState.slice(0, taskIndex),
+    ...prevState.slice(taskIndex + 1),
   ];
 
   return [...newState, { name, stage: action === 1 ? stage - 1 : stage + 1 }];
