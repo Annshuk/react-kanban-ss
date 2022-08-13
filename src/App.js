@@ -100,7 +100,7 @@ export default function App() {
                           </IconButton>
                           <IconButton
                             aria-label="delete"
-                            onClick={() => removeTask(index)}
+                            onClick={() => removeTask(task)}
                           >
                             <Delete />
                           </IconButton>
