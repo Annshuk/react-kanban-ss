@@ -11,7 +11,7 @@ import {
   Input,
 } from 'reactstrap';
 import IconButton from '@mui/material/IconButton';
-import { ArrowRigh, ArrowLeft, Delete } from '@mui/icons-material';
+import { ArrowRight, ArrowLeft, Delete } from '@mui/icons-material';
 
 const stagesNames = ['Backlog', 'To Do', 'Ongoing', 'Done'];
 
