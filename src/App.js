@@ -44,11 +44,11 @@ const remove = (arr, index) => [
  * moveForwardOrBack
  * move forward or back on button click
  */
-const moveForwardOrBack = (prevState, task, action) => {
+const moveForwardOrBack = (tasks, task, action) => {
   const { name, stage } = task;
 
-  const taskIndex = [...prevState].indexOf(task);
-  const newState = remove(prevState, taskIndex);
+  const taskIndex = [...tasks].indexOf(task);
+  const newState = remove(tasks, taskIndex);
 
   return [...newState, { name, stage: action === 1 ? stage - 1 : stage + 1 }];
 };
