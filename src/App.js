@@ -51,7 +51,7 @@ const moveForwardOrBack = (tasks, task, action) => {
   return [...newState, { name, stage: action ? stage - 1 : stage + 1 }];
 };
 
-export default App = () => {
+const App = () => {
   const [tasksList, setTaskList] = useState([
     { name: 'one', stage: 0 },
     { name: 'two', stage: 0 },
@@ -122,3 +122,5 @@ export default App = () => {
     </Container>
   );
 };
+
+export default App;
