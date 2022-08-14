@@ -48,7 +48,7 @@ const moveForwardOrBack = (tasks, task, action) => {
   const taskIndex = [...tasks].indexOf(task);
   const newState = remove(tasks, taskIndex);
 
-  return [...newState, { name, stage: action === 'Back' ? stage - 1 : stage + 1 }];
+  return [...newState, { name, stage: action ? stage - 1 : stage + 1 }];
 };
 
 export default function App() {
@@ -60,7 +60,7 @@ export default function App() {
   const tasksLits = useMemo(() => makeCards(tasksList), [tasksList]);
 
   const moveBack = (task) => {
-    setTaskList((prevState) => moveForwardOrBack(prevState, task, 'Back'));
+    setTaskList((prevState) => moveForwardOrBack(prevState, task, true));
   };
 
   const moveForward = (task) => {
