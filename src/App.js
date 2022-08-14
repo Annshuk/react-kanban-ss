@@ -51,13 +51,13 @@ const moveForwardOrBack = (tasks, task, action) => {
   return [...newState, { name, stage: action ? stage - 1 : stage + 1 }];
 };
 
-export default function App() {
+export default App = () => {
   const [tasksList, setTaskList] = useState([
     { name: 'one', stage: 0 },
     { name: 'two', stage: 0 },
   ]);
 
-  const tasksLits = useMemo(() => makeCards(tasksList), [tasksList]);
+  const kanbanTasks = useMemo(() => makeCards(tasksList), [tasksList]);
 
   const moveBack = (task) => {
     setTaskList((prevState) => moveForwardOrBack(prevState, task, true));
@@ -78,7 +78,7 @@ export default function App() {
   return (
     <Container fluid>
       <Row>
-        {tasksLits.map((tasks, i) => {
+        {kanbanTasks.map((tasks, i) => {
           return (
             <Col xs="12" sm="3" md="3" key={i}>
               <Card className="my-2" outline>
@@ -121,4 +121,4 @@ export default function App() {
       </Row>
     </Container>
   );
-}
+};
