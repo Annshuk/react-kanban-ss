@@ -8,7 +8,6 @@ import {
   CardTitle,
   ListGroup,
   ListGroupItem,
-  Input,
 } from 'reactstrap';
 import IconButton from '@mui/material/IconButton';
 import { ArrowRight, ArrowLeft, Delete } from '@mui/icons-material';
